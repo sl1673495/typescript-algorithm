@@ -10,7 +10,9 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "type": ["type"],
+      "util": ["util"],
     },
     "allowSyntheticDefaultImports": true,
     "noImplicitThis": true
