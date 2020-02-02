@@ -1,4 +1,5 @@
 import {SortFunction} from 'type'
+import insertSort from './insert-sort-v2'
 
 /**
  * 归并排序
@@ -8,8 +9,10 @@ import {SortFunction} from 'type'
 
 // 递归使用归并排序 对arr[left...right]的范围进行排序
 const merge = (arr: number[], left: number, right: number) => {
-  if (left >= right) {
-    return
+  // 在只剩下15个元素的时候 退回为插入排序
+  if (right - left <= 15) {
+    // 这里right需要+1
+    return insertSort(arr, left, right)
   }
   // 取中间数 丢弃小数部分
   const mid = Math.floor((left + right) / 2)
@@ -17,8 +20,13 @@ const merge = (arr: number[], left: number, right: number) => {
   merge(arr, left, mid)
   // 对右半部分归并
   merge(arr, mid + 1, right)
-  // 对数组归并好的两端进行顺序合并
-  mergeThunk(arr, left, mid, right)
+
+  // 归并排序中 总能保证arr[left...mid]和arr[mid...right]的数组都是有序的
+  // 所以如果数组的中间值大于数组右边的值 才说明左右两边需要排序
+  if (arr[mid] > arr[mid + 1]) {
+    // 对数组归并好的两端进行顺序合并
+    mergeThunk(arr, left, mid, right)
+  }
 }
 
 // 将arr[left...mid]和arr[mid+1...right]两部分进行归并

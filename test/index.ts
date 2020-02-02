@@ -3,7 +3,7 @@ import path from 'path'
 import glob from 'glob'
 
 const source = getRandomArray(50000)
-const nearlySource = getNearlyArray(10000, 10)
+const nearlySource = getNearlyArray(50000, 10)
 glob('src/*.ts', (err, result) => {
   if (err) throw err
   const sortFunctions = result

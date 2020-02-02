@@ -1,14 +1,12 @@
 import {SortFunction} from 'type'
-import {swap} from '../util'
 
 /**
  * 插入排序
  * 遍历数组 把每一项和它前一个元素比较
  * 如果比前一个小 就交换
  */
-const insertSort: SortFunction = arr => {
-  const {length} = arr
-  for (let i = 1; i < length; i++) {
+const insertSort: SortFunction = (arr, left = 0, right = arr.length - 1) => {
+  for (let i = left; i <= right; i++) {
     // 拿出当前元素 临时存储在e中
     const e = arr[i]
 
