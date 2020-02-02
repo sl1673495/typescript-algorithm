@@ -16,11 +16,12 @@ export function sortTest(
     const end = new Date().getTime()
     const time = end - start
     const timeStr = `${time}ms`
-    const success = isSorted(copy)
+    const success = isSorted(copy, source)
     table[fn.sortName] = {
       耗时: timeStr,
       数据长度: source.length,
       结果: success ? '成功' : '失败',
+      数据: copy,
     }
   })
 
@@ -51,10 +52,10 @@ export function getNearlyArray(count: number, swapTime: number) {
   return arr
 }
 
-export function isSorted(arr: number[]) {
+export function isSorted(target: number[], source: number[]) {
   return (
-    arr.toString() ===
-    arr
+    target.toString() ===
+    source
       .slice()
       .sort((a, b) => a - b)
       .toString()

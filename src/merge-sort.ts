@@ -31,7 +31,7 @@ const mergeThunk = (
   // 临时拷贝
   const aux = []
   for (let i = left; i <= right; i++) {
-    aux.push(i)
+    aux[i - left] = arr[i]
   }
   let i = left
   let j = mid + 1
