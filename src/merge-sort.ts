@@ -7,6 +7,22 @@ import insertSort from './insert-sort-v2'
  * 最终归并成一个排序好的数组
  */
 
+/**
+[4,1,2,3]
+
+[4,1] [2,3]
+
+[4][1][2][3]
+
+[1,4][2,3]
+
+// 两个数组进行归并i, j分别遍历两个数组
+i 1 j 0 [1]
+i 1 j 1 [1, 2]
+i 1 j 2 [1,2,3]
+i 2 j 2 [1, 2, 3, 4]
+*/
+
 // 递归使用归并排序 对arr[left...right]的范围进行排序
 const merge = (arr: number[], left: number, right: number) => {
   // 在只剩下15个元素的时候 退回为插入排序
